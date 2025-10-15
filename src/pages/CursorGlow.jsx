@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function CursorGlow() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -12,12 +12,12 @@ export function CursorGlow() {
 
     const handleMouseLeave = () => setIsVisible(false);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -29,7 +29,7 @@ export function CursorGlow() {
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        transform: 'translate(-50%, -50%)',
+        transform: "translate(-50%, -50%)",
       }}
     >
       <div className="w-8 h-8 bg-cyan-400/30 rounded-full blur-xl animate-pulse" />

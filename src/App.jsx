@@ -1,11 +1,11 @@
-import { StarfieldBackground } from './components/StarfieldBackground';
-import { CursorGlow } from './pages/CursorGlow';
-import { HeroSection } from './pages/HeroSection';
-import { AboutSection } from './pages/AboutSection';
-import { SkillsSection } from './pages/SkillsSection';
-import { ProjectsSection } from './pages/ProjectsSection';
-import { ContactSection } from './pages/ContactSection';
-import { Footer } from './components/Footer';
+import { StarfieldBackground } from "./components/StarfieldBackground";
+import { CursorGlow } from "./pages/CursorGlow";
+import { HeroSection } from "./pages/HeroSection";
+import { AboutSection } from "./pages/AboutSection";
+import { SkillsSection } from "./pages/SkillsSection";
+import { ProjectsSection } from "./pages/ProjectsSection";
+import { ContactSection } from "./pages/ContactSection";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
       {/* Background Effects */}
       <StarfieldBackground />
       <CursorGlow />
-      
+
       {/* Main Content */}
       <main className="relative z-10">
         <HeroSection />

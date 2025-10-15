@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export function StarfieldBackground() {
   const canvasRef = useRef(null);
@@ -7,7 +7,7 @@ export function StarfieldBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
@@ -41,10 +41,17 @@ export function StarfieldBackground() {
         star.opacity += (Math.random() - 0.5) * 0.02;
         star.opacity = Math.max(0.3, Math.min(1, star.opacity));
 
-        const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.radius * 2);
+        const gradient = ctx.createRadialGradient(
+          star.x,
+          star.y,
+          0,
+          star.x,
+          star.y,
+          star.radius * 2
+        );
         gradient.addColorStop(0, `rgba(0, 255, 255, ${star.opacity})`);
         gradient.addColorStop(0.5, `rgba(139, 92, 246, ${star.opacity * 0.5})`);
-        gradient.addColorStop(1, 'rgba(0, 255, 255, 0)');
+        gradient.addColorStop(1, "rgba(0, 255, 255, 0)");
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -62,8 +69,8 @@ export function StarfieldBackground() {
       canvas.height = window.innerHeight;
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

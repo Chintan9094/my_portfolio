@@ -1,16 +1,75 @@
-# React + Vite
+# 🌌 Chintan Desai | Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Portfolio Banner](https://via.placeholder.com/1200x300?text=Chintan+Desai+Portfolio)
 
-Currently, two official plugins are available:
+Welcome to my **digital playground**!  
+This is my **personal portfolio website**, crafted with **React**, **Vite**, and **Tailwind CSS**. It showcases my **skills, projects, and social links** with modern animations and futuristic neon vibes.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **✨ Hero Section**
+  - Typewriter effect for roles: `Frontend Developer`, `React Enthusiast`, `UI/UX Lover`
+  - Animated gradient text & underlines
+  - Floating tech icons with smooth motion
+  - Scroll indicator with glow effects
 
-## Expanding the ESLint configuration
+- **💻 Interactive UI**
+  - Call-to-action buttons with hover & tap animations
+  - Social media links with motion hover effects
+  - Glassmorphism backdrop for hero section
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **📱 Responsive & Mobile-Friendly**
+  - Fully responsive design
+  - Smooth animations across devices
+
+- **⚡ Performance Optimized**
+  - Lazy loading & code splitting
+  - Optimized images & assets
+  - Minimized render-blocking requests
+
+- **♿ Accessibility**
+  - Accessible buttons & links with `aria-labels`
+  - High contrast text for readability
+
+---
+
+## 🛠 Tech Stack
+
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+
+- **Frontend:** React.js + Tailwind CSS  
+- **Bundler:** Vite  
+- **Animation:** Framer Motion  
+- **Typewriter Effect:** react-simple-typewriter  
+- **Icons:** lucide-react  
+- **Deployment Ready:** Vercel, Netlify, GitHub Pages  
+
+---
+
+## 🌐 Live Demo
+
+[![Live Preview](https://img.shields.io/badge/Live-Demo-10B981?style=for-the-badge)](https://your-portfolio-link.vercel.app)
+
+---
+
+## 📂 Project Structure
+
+```text
+my-portfolio/
+├─ public/                # Static assets: favicon, images
+├─ src/
+│  ├─ components/        # React components
+│  │   ├─ HeroSection.jsx
+│  │   ├─ Navbar.jsx
+│  │   └─ ...
+│  ├─ pages/             # Optional pages
+│  ├─ App.jsx
+│  └─ main.jsx
+├─ index.html
+├─ package.json
+└─ vite.config.js

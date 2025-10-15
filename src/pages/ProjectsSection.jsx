@@ -1,56 +1,56 @@
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { useInView } from 'framer-motion';
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { ExternalLink, Github } from "lucide-react";
+import { useInView } from "framer-motion";
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Full-stack online store with cart, payments & admin dashboard',
-    tech: ['Next.js', 'TypeScript', 'Stripe', 'Prisma'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-cyan-500 to-blue-600',
+    title: "News Cart",
+    description:
+      "Dynamic news aggregator that fetches real-time headlines and categorizes them by topics with smooth UI animations.",
+    tech: ["Next.js", "Bootstrap CSS", "Framer Motion"],
+    liveUrl: "https://newscart.org/",
+    gradient: "from-cyan-500 to-blue-600",
   },
   {
-    title: 'AI Chat Application',
-    description: 'Real-time messaging app with AI-powered responses',
-    tech: ['React', 'WebSocket', 'OpenAI', 'Tailwind'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-purple-500 to-pink-600',
+    title: "Guj Prajapati Samaj",
+    description:
+      "Community web platform built for Prajapati Samaj to share events, member directories, and announcements.",
+    tech: ["React", "Tailwind CSS"],
+    liveUrl: "https://gujaratprajapatisamaj.com/",
+    gradient: "from-purple-500 to-pink-600",
   },
   {
-    title: 'Portfolio Dashboard',
-    description: 'Analytics dashboard with interactive charts & data visualization',
-    tech: ['React', 'Recharts', 'TypeScript', 'API'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-green-500 to-emerald-600',
+    title: "Hotel Booking System",
+    description:
+      "Modern booking platform with real-time room availability, secure payments, and admin panel for hotel management.",
+    tech: ["PHP", "MySQL", "JavaScript", "Bootstrap"],
+    liveUrl: "#",
+    gradient: "from-green-500 to-emerald-600",
   },
   {
-    title: 'Task Management App',
-    description: 'Kanban-style task manager with drag & drop functionality',
-    tech: ['Next.js', 'DnD Kit', 'Zustand', 'Tailwind'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-orange-500 to-red-600',
+    title: "Online Learning Platform",
+    description:
+      "E-learning app with interactive video lessons, progress tracking, and student dashboards for a seamless study experience.",
+    tech: ["Python", "MySQL", "Flask", "Tailwind CSS"],
+    liveUrl: "#",
+    gradient: "from-orange-500 to-red-600",
   },
   {
-    title: 'Weather Forecast',
-    description: 'Beautiful weather app with animations & location detection',
-    tech: ['React', 'Weather API', 'Motion', 'Geolocation'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-sky-500 to-indigo-600',
+    title: "KnighOne",
+    description:
+      "Corporate business landing page featuring smooth animations, responsive layouts, and clean minimal design.",
+    tech: ["React", "Framer Motion", "Tailwind CSS"],
+    liveUrl: "#",
+    gradient: "from-sky-500 to-indigo-600",
   },
   {
-    title: 'Music Player',
-    description: 'Spotify-inspired music player with playlists & audio controls',
-    tech: ['React', 'Web Audio API', 'Tailwind', 'Context'],
-    liveUrl: '#',
-    githubUrl: '#',
-    gradient: 'from-pink-500 to-rose-600',
+    title: "Personal Portfolio",
+    description:
+      "My own portfolio website showcasing my projects, skills, and creative web design powered by motion effects.",
+    tech: ["React", "Framer Motion", "Tailwind CSS"],
+    liveUrl: "#",
+    gradient: "from-pink-500 to-rose-600",
   },
 ];
 
@@ -59,7 +59,11 @@ export function ProjectsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="projects"
+      ref={ref}
+      className="relative py-32 px-6 overflow-hidden"
+    >
       {/* Background Effects */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
@@ -91,7 +95,9 @@ export function ProjectsSection() {
               className="group relative"
             >
               <div className="relative h-full p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`} />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
+                />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl shadow-[0_0_40px_rgba(0,255,255,0.2)]" />
 
                 <div className="relative z-10">
@@ -115,24 +121,37 @@ export function ProjectsSection() {
                   </div>
 
                   <div className="flex gap-4">
-                    <motion.a
-                      href={project.liveUrl}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-shadow"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
-                    </motion.a>
+                    {/* Live Demo button conditionally rendered */}
+                    {project.liveUrl && project.liveUrl !== "#" ? (
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-shadow"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Live Demo</span>
+                      </motion.a>
+                    ) : (
+                      <button
+                        disabled
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700/50 text-gray-400 rounded-lg cursor-not-allowed"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Not Available</span>
+                      </button>
+                    )}
 
-                    <motion.a
+                    {/* <motion.a
                       href={project.githubUrl}
+                      target="_blank"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-12 h-12 flex items-center justify-center border border-cyan-400/50 rounded-lg hover:bg-cyan-400/10 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-all"
                     >
                       <Github className="w-5 h-5 text-cyan-400" />
-                    </motion.a>
+                    </motion.a> */}
                   </div>
                 </div>
 
@@ -145,7 +164,7 @@ export function ProjectsSection() {
                   transition={{
                     duration: 8,
                     repeat: Infinity,
-                    ease: 'linear',
+                    ease: "linear",
                   }}
                 />
               </div>

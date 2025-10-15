@@ -1,15 +1,43 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const skills = [
-  { name: 'React', color: 'from-cyan-400 to-blue-500', glow: 'rgba(0, 255, 255, 0.4)' },
-  { name: 'Next.js', color: 'from-white to-gray-400', glow: 'rgba(255, 255, 255, 0.3)' },
-  { name: 'TypeScript', color: 'from-blue-400 to-blue-600', glow: 'rgba(59, 130, 246, 0.4)' },
-  { name: 'JavaScript', color: 'from-yellow-400 to-yellow-600', glow: 'rgba(250, 204, 21, 0.4)' },
-  { name: 'Tailwind CSS', color: 'from-cyan-400 to-teal-500', glow: 'rgba(34, 211, 238, 0.4)' },
-  { name: 'Framer Motion', color: 'from-purple-400 to-pink-500', glow: 'rgba(168, 85, 247, 0.4)' },
-  { name: 'Git', color: 'from-orange-400 to-red-500', glow: 'rgba(251, 146, 60, 0.4)' },
-  { name: 'REST APIs', color: 'from-green-400 to-emerald-500', glow: 'rgba(34, 197, 94, 0.4)' },
+  {
+    name: "React",
+    color: "from-cyan-400 to-blue-500",
+    glow: "rgba(0, 255, 255, 0.4)",
+  },
+  {
+    name: "Next.js",
+    color: "from-white to-gray-400",
+    glow: "rgba(255, 255, 255, 0.3)",
+  },
+  {
+    name: "JavaScript",
+    color: "from-yellow-400 to-yellow-600",
+    glow: "rgba(250, 204, 21, 0.4)",
+  },
+  {
+    name: "Tailwind CSS",
+    color: "from-cyan-400 to-teal-500",
+    glow: "rgba(34, 211, 238, 0.4)",
+  },
+  {
+    name: "Bootstrap",
+    color: "from-blue-400 to-blue-600",
+    glow: "rgba(59, 130, 246, 0.4)",
+  },
+  {
+    name: "Framer Motion",
+    color: "from-purple-400 to-pink-500",
+    glow: "rgba(168, 85, 247, 0.4)",
+  },
+  {
+    name: "Git",
+    color: "from-orange-400 to-red-500",
+    glow: "rgba(251, 146, 60, 0.4)",
+  },
+  // { name: 'REST APIs', color: 'from-green-400 to-emerald-500', glow: 'rgba(34, 197, 94, 0.4)' },
 ];
 
 export function SkillsSection() {
@@ -17,12 +45,16 @@ export function SkillsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+    <section
+      ref={ref}
+      id="skills"
+      className="relative py-32 px-6 overflow-hidden"
+    >
       {/* Background Effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -44,16 +76,16 @@ export function SkillsSection() {
               key={skill.name}
               initial={{ opacity: 0, scale: 0 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: index * 0.1,
-                type: 'spring',
+                type: "spring",
                 stiffness: 200,
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.15,
                 rotate: [0, -5, 5, -5, 0],
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="relative group"
             >
@@ -64,20 +96,22 @@ export function SkillsSection() {
                 transition={{
                   duration: 3 + (index % 3),
                   repeat: Infinity,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }}
                 className="relative"
               >
                 {/* Glow Effect */}
-                <div 
+                <div
                   className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ 
+                  style={{
                     boxShadow: `0 0 40px ${skill.glow}`,
                   }}
                 />
-                
+
                 {/* Skill Bubble */}
-                <div className={`relative w-32 h-32 rounded-full bg-gradient-to-br ${skill.color} p-1`}>
+                <div
+                  className={`relative w-32 h-32 rounded-full bg-gradient-to-br ${skill.color} p-1`}
+                >
                   <div className="w-full h-full rounded-full bg-black/80 backdrop-blur-sm flex items-center justify-center border border-white/10">
                     <span className="text-white text-center px-4">
                       {skill.name}

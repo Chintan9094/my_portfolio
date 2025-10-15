@@ -1,9 +1,24 @@
-import { motion } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 
 export function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const sections = [
+    { name: "Home", id: "hero" },
+    { name: "About", id: "about" },
+    { name: "Projects", id: "projects" },
+    { name: "Skills", id: "skills" },
+    { name: "Contact", id: "contact" },
+  ];
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -20,10 +35,37 @@ export function Footer() {
             viewport={{ once: true }}
             className="text-white/50 text-center md:text-left"
           >
-            © 2025 Chintan. Crafted with{' '}
-            <span className="text-cyan-400">React</span> &{' '}
+            © {new Date().getFullYear()} Chintan. Crafted with{" "}
+            <span className="text-cyan-400">React</span> &{" "}
             <span className="text-purple-400">Motion</span>
           </motion.p>
+
+          {/* Quick Nav Links */}
+          <motion.div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm font-medium"
+              >
+                {section.name}
+              </button>
+            ))}
+
+            <motion.a
+              href="/public/Chintan-Resume.pdf"
+              download
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+                boxShadow: "0 0 20px rgba(0,255,255,0.5)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-medium text-sm transition-all flex items-center justify-center gap-2"
+            >
+              Download Resume
+            </motion.a>
+          </motion.div>
 
           {/* Scroll to Top Button */}
           <motion.button
@@ -45,7 +87,7 @@ export function Footer() {
           className="mt-8 text-center"
         >
           <p className="text-white/30 text-sm">
-            Built with Next.js · Tailwind CSS · Motion
+            Built with React · Tailwind CSS · Framer Motion
           </p>
         </motion.div>
       </div>
