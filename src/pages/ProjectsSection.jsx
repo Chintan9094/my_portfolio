@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github } from "lucide-react";
-import { useInView } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -54,7 +53,7 @@ const projects = [
   },
 ];
 
-export function ProjectsSection() {
+export function ProjectsSection({ isDarkMode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -62,7 +61,7 @@ export function ProjectsSection() {
     <section
       id="projects"
       ref={ref}
-      className="relative py-32 px-6 overflow-hidden"
+      className={`relative py-32 px-6 overflow-hidden ${isDarkMode ? "bg-black" : "bg-white"}`}
     >
       {/* Background Effects */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
@@ -78,7 +77,7 @@ export function ProjectsSection() {
           <h2 className="mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className={`${isDarkMode ? "text-white/60" : "text-black/70"} max-w-2xl mx-auto`}>
             A showcase of my recent work - from concept to deployment
           </p>
         </motion.div>
@@ -94,18 +93,24 @@ export function ProjectsSection() {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className="relative h-full p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden">
+              <div
+                className={`relative h-full p-6 rounded-2xl backdrop-blur-sm border transition-all duration-300 overflow-hidden
+                  ${isDarkMode 
+                    ? "bg-white/5 border-cyan-400/20 hover:border-cyan-400/50" 
+                    : "bg-white/80 border-gray-300 hover:border-gray-400"
+                  }`}
+              >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
                 />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl shadow-[0_0_40px_rgba(0,255,255,0.2)]" />
 
                 <div className="relative z-10">
-                  <h3 className="text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                  <h3 className={`${isDarkMode ? "text-white" : "text-black"} mb-3 group-hover:text-cyan-400 transition-colors`}>
                     {project.title}
                   </h3>
 
-                  <p className="text-white/60 mb-4 leading-relaxed">
+                  <p className={`${isDarkMode ? "text-white/60" : "text-black/70"} mb-4 leading-relaxed`}>
                     {project.description}
                   </p>
 
@@ -113,7 +118,11 @@ export function ProjectsSection() {
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/20"
+                        className={`px-3 py-1 text-xs rounded-full border ${
+                          isDarkMode
+                            ? "bg-cyan-400/10 text-cyan-400 border-cyan-400/20"
+                            : "bg-gray-200/60 text-black border-gray-300"
+                        }`}
                       >
                         {tech}
                       </span>
@@ -121,14 +130,17 @@ export function ProjectsSection() {
                   </div>
 
                   <div className="flex gap-4">
-                    {/* Live Demo button conditionally rendered */}
                     {project.liveUrl && project.liveUrl !== "#" ? (
                       <motion.a
                         href={project.liveUrl}
                         target="_blank"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-shadow"
+                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow ${
+                          isDarkMode
+                            ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:shadow-[0_0_20px_rgba(0,255,255,0.4)]"
+                            : "bg-gradient-to-r from-cyan-400 to-blue-500 hover:shadow-[0_0_10px_rgba(0,0,0,0.2)]"
+                        }`}
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
@@ -136,27 +148,18 @@ export function ProjectsSection() {
                     ) : (
                       <button
                         disabled
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700/50 text-gray-400 rounded-lg cursor-not-allowed"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg cursor-not-allowed bg-gray-300 text-gray-500"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Not Available</span>
                       </button>
                     )}
-
-                    {/* <motion.a
-                      href={project.githubUrl}
-                      target="_blank"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 flex items-center justify-center border border-cyan-400/50 rounded-lg hover:bg-cyan-400/10 hover:shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-all"
-                    >
-                      <Github className="w-5 h-5 text-cyan-400" />
-                    </motion.a> */}
                   </div>
                 </div>
 
                 <motion.div
-                  className={`absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
+                  className={`absolute -bottom-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30`}
+                  style={{ background: `linear-gradient(135deg, ${project.gradient.split(" to ").join(", ")})` }}
                   animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 90, 0],
