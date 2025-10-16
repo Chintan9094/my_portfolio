@@ -24,14 +24,7 @@ export function CursorGlow() {
   if (!isVisible) return null;
 
   return (
-    <div
-      className="pointer-events-none fixed z-50 hidden md:block"
-      style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        transform: "translate(-50%, -50%)",
-      }}
-    >
+    <div className="pointer-events-none fixed z-50 hidden md:block" style={{ left: `${position.x}px`, top: `${position.y}px`, transform: "translate(-50%, -50%)" }}>
       <div className="w-8 h-8 bg-cyan-400/30 rounded-full blur-xl animate-pulse" />
       <div className="absolute inset-0 w-4 h-4 bg-purple-500/40 rounded-full blur-md m-auto" />
     </div>

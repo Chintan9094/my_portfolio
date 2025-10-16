@@ -10,11 +10,15 @@ export function StarfieldBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    let running = true;
+    const setSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    setSize();
 
     const stars = [];
-    const starCount = 150;
+    const starCount = Math.floor((canvas.width * canvas.height) / 8000);
 
     for (let i = 0; i < starCount; i++) {
       stars.push({
@@ -28,7 +32,7 @@ export function StarfieldBackground() {
     }
 
     function animate() {
-      if (!ctx || !canvas) return;
+      if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach((star) => {
@@ -39,16 +43,9 @@ export function StarfieldBackground() {
         if (star.y < 0 || star.y > canvas.height) star.vy *= -1;
 
         star.opacity += (Math.random() - 0.5) * 0.02;
-        star.opacity = Math.max(0.3, Math.min(1, star.opacity));
+        star.opacity = Math.max(0.2, Math.min(1, star.opacity));
 
-        const gradient = ctx.createRadialGradient(
-          star.x,
-          star.y,
-          0,
-          star.x,
-          star.y,
-          star.radius * 2
-        );
+        const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.radius * 2);
         gradient.addColorStop(0, `rgba(0, 255, 255, ${star.opacity})`);
         gradient.addColorStop(0.5, `rgba(139, 92, 246, ${star.opacity * 0.5})`);
         gradient.addColorStop(1, "rgba(0, 255, 255, 0)");
@@ -65,19 +62,15 @@ export function StarfieldBackground() {
     animate();
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      setSize();
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      running = false;
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none opacity-40"
-      style={{ zIndex: 0 }}
-    />
-  );
+  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none opacity-40" style={{ zIndex: 0 }} />;
 }
