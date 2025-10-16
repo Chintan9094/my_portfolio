@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Code, Cpu, Terminal } from "lucide-react";
 
-export default function Preloader({ theme = "dark", onFinish }) {
+function PreloaderComponent({ theme = "dark", onFinish }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
       if (onFinish) onFinish();
-    }, 1400); // slightly shorter
+    }, 2000); 
     return () => clearTimeout(timer);
   }, [onFinish]);
 
@@ -58,3 +58,5 @@ export default function Preloader({ theme = "dark", onFinish }) {
     </div>
   );
 }
+
+export default memo(PreloaderComponent);

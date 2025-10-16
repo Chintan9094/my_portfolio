@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
-export function StarfieldBackground() {
+function StarfieldBackgroundComponent() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -61,16 +61,21 @@ export function StarfieldBackground() {
 
     animate();
 
+    let resizeRaf;
     const handleResize = () => {
-      setSize();
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(setSize);
     };
 
     window.addEventListener("resize", handleResize);
     return () => {
       running = false;
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none opacity-40" style={{ zIndex: 0 }} />;
 }
+
+export const StarfieldBackground = memo(StarfieldBackgroundComponent);

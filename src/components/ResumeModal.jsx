@@ -18,6 +18,9 @@ export default function ResumeModal({ isOpen, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-transparent backdrop-blur-[10px]"
+      aria-modal="true"
+      role="dialog"
+      aria-label="Resume modal"
     >
       {/* Close Button */}
       <motion.button
@@ -50,6 +53,7 @@ export default function ResumeModal({ isOpen, onClose }) {
           src="/Chintan-Resume.pdf"
           className="w-full h-full rounded-xl"
           title="Chintan Resume"
+          loading="lazy"
         ></iframe>
 
 

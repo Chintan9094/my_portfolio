@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { ExternalLink } from "lucide-react";
 
 const projects = [
@@ -47,7 +47,7 @@ const projects = [
   },
 ];
 
-export function ProjectsSection({ isDarkMode }) {
+function ProjectsSectionComponent({ isDarkMode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
@@ -82,12 +82,12 @@ export function ProjectsSection({ isDarkMode }) {
 
                   <div className="flex gap-4">
                     {project.liveUrl && project.liveUrl !== "#" ? (
-                      <motion.a href={project.liveUrl} target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow ${isDarkMode ? "bg-gradient-to-r from-cyan-500 to-purple-600" : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white"}`}>
+                      <motion.a aria-label={`Open ${project.title} live demo`} href={project.liveUrl} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow ${isDarkMode ? "bg-gradient-to-r from-cyan-500 to-purple-600" : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white"}`}>
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
                       </motion.a>
                     ) : (
-                      <button disabled className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg cursor-not-allowed bg-gray-200 text-gray-500">
+                      <button aria-disabled="true" disabled className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg cursor-not-allowed bg-gray-200 text-gray-500">
                         <ExternalLink className="w-4 h-4" />
                         <span>Not Available</span>
                       </button>
@@ -104,3 +104,5 @@ export function ProjectsSection({ isDarkMode }) {
     </section>
   );
 }
+
+export const ProjectsSection = memo(ProjectsSectionComponent);

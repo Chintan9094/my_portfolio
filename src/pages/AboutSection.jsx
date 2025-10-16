@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import { GraduationCap, Briefcase, Code, Rocket } from "lucide-react";
 
 const timeline = [
@@ -11,7 +11,7 @@ const timeline = [
   { year: "Now", title: "Frontend Developer", description: "Crafting beautiful, performant web experiences", icon: Rocket },
 ];
 
-export function AboutSection({ isDarkMode }) {
+function AboutSectionComponent({ isDarkMode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -58,3 +58,5 @@ export function AboutSection({ isDarkMode }) {
     </section>
   );
 }
+
+export const AboutSection = memo(AboutSectionComponent);

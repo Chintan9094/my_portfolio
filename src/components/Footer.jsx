@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 const resumePDF = "/Chintan-Resume.pdf";
 
-export function Footer({ isDarkMode }) {
+function FooterComponent({ isDarkMode }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -34,7 +35,7 @@ export function Footer({ isDarkMode }) {
 
           <motion.div className="flex flex-wrap gap-4 justify-center md:justify-start items-center">
             {sections.map((section) => (
-              <button key={section.id} onClick={() => scrollToSection(section.id)} className={isDarkMode ? "text-white/60 hover:text-cyan-400 transition-colors text-sm font-medium" : "text-gray-700/70 hover:text-cyan-600 transition-colors text-sm font-medium"}>
+              <button aria-label={`Go to ${section.name} section`} key={section.id} onClick={() => scrollToSection(section.id)} className={isDarkMode ? "text-white/60 hover:text-cyan-400 transition-colors text-sm font-medium" : "text-gray-700/70 hover:text-cyan-600 transition-colors text-sm font-medium"}>
                 {section.name}
               </button>
             ))}
@@ -57,7 +58,7 @@ export function Footer({ isDarkMode }) {
             </motion.a>
           </motion.div>
 
-          <motion.button onClick={scrollToTop} whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9 }} className={`w-12 h-12 rounded-full flex items-center justify-center transition-shadow ${isDarkMode ? "bg-gradient-to-br from-cyan-500 to-purple-600 hover:shadow-[0_0_30px_rgba(0,255,255,0.5)]" : "bg-gradient-to-br from-cyan-100 to-purple-100 hover:shadow-[0_0_20px_rgba(0,0,0,0.08)]"}`}>
+          <motion.button aria-label="Scroll to top" onClick={scrollToTop} whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9 }} className={`w-12 h-12 rounded-full flex items-center justify-center transition-shadow ${isDarkMode ? "bg-gradient-to-br from-cyan-500 to-purple-600 hover:shadow-[0_0_30px_rgba(0,255,255,0.5)]" : "bg-gradient-to-br from-cyan-100 to-purple-100 hover:shadow-[0_0_20px_rgba(0,0,0,0.08)]"}`}>
             <ArrowUp className={`w-5 h-5 ${isDarkMode ? "text-white" : "text-gray-800"}`} />
           </motion.button>
         </div>
@@ -69,3 +70,5 @@ export function Footer({ isDarkMode }) {
     </footer>
   );
 }
+
+export const Footer = memo(FooterComponent);

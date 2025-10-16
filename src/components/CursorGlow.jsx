@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState, useRef } from "react";
 
-export function CursorGlow() {
+function CursorGlowComponent() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      const clientX = e.clientX;
+      const clientY = e.clientY;
+      rafIdRef.current = requestAnimationFrame(() => {
+        setPosition({ x: clientX, y: clientY });
+      });
     };
 
     const handleMouseLeave = () => setIsVisible(false);
@@ -16,6 +22,7 @@ export function CursorGlow() {
     document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
@@ -30,3 +37,5 @@ export function CursorGlow() {
     </div>
   );
 }
+
+export const CursorGlow = memo(CursorGlowComponent);

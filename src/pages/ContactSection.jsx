@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import {
   Send,
   Github,
@@ -37,7 +37,7 @@ const socialLinks = [
   },
 ];
 
-export function ContactSection({ isDarkMode }) {
+function ContactSectionComponent({ isDarkMode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [formData, setFormData] = useState({
@@ -115,6 +115,7 @@ export function ContactSection({ isDarkMode }) {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.form
             noValidate
+            aria-label="Contact form"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -127,6 +128,8 @@ export function ContactSection({ isDarkMode }) {
                   <motion.input
                     type={field === "email" ? "email" : "text"}
                     required
+                    aria-invalid={!!errors[field]}
+                    aria-describedby={errors[field] ? `${field}-error` : undefined}
                     value={formData[field]}
                     onChange={(e) =>
                       setFormData({ ...formData, [field]: e.target.value })
@@ -140,6 +143,8 @@ export function ContactSection({ isDarkMode }) {
                   <motion.textarea
                     rows={5}
                     required
+                    aria-invalid={!!errors[field]}
+                    aria-describedby={errors[field] ? `${field}-error` : undefined}
                     value={formData[field]}
                     onChange={(e) =>
                       setFormData({ ...formData, [field]: e.target.value })
@@ -174,7 +179,7 @@ export function ContactSection({ isDarkMode }) {
                     : "Your Message"}
                 </motion.label>
                 {errors[field] && (
-                  <p className="text-red-400 text-sm mt-1">{errors[field]}</p>
+                  <p id={`${field}-error`} className="text-red-400 text-sm mt-1">{errors[field]}</p>
                 )}
               </div>
             ))}
@@ -293,3 +298,5 @@ export function ContactSection({ isDarkMode }) {
     </section>
   );
 }
+
+export const ContactSection = memo(ContactSectionComponent);

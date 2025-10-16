@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 const skills = [
   { name: "React", color: "from-cyan-400 to-blue-500", glow: "rgba(0, 255, 255, 0.4)" },
@@ -11,7 +11,7 @@ const skills = [
   { name: "Git", color: "from-orange-400 to-red-500", glow: "rgba(251, 146, 60, 0.4)" },
 ];
 
-export function SkillsSection({ isDarkMode }) {
+function SkillsSectionComponent({ isDarkMode }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -46,3 +46,5 @@ export function SkillsSection({ isDarkMode }) {
     </section>
   );
 }
+
+export const SkillsSection = memo(SkillsSectionComponent);

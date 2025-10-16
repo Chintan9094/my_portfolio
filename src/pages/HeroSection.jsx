@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { startTransition } from "react";
 import {
   Github,
   Linkedin,
@@ -39,7 +40,8 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
       {/* Theme Toggle Button */}
       <div className="absolute top-6 right-6 z-50">
         <motion.button
-          onClick={() => setIsDarkMode(!isDarkMode)}
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          onClick={() => startTransition(() => setIsDarkMode(!isDarkMode))}
           initial={{ rotate: 0 }}
           animate={{ rotate: isDarkMode ? 0 : 360 }}
           transition={{ type: "spring", stiffness: 120, damping: 12 }}
