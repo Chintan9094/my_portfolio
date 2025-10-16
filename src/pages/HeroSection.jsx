@@ -9,6 +9,7 @@ import {
   Sparkles,
   Sun,
   Moon,
+  Zap,
 } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 const resumePDF = "/Chintan-Resume.pdf";
@@ -16,8 +17,9 @@ const resumePDF = "/Chintan-Resume.pdf";
 export function HeroSection({ isDarkMode, setIsDarkMode }) {
   const floatingIcons = [
     { Icon: Code2, delay: 0, x: -100, y: -50 },
-    { Icon: Sparkles, delay: 0.2, x: 100, y: -80 },
-    { Icon: Github, delay: 0.4, x: -80, y: 60 },
+    { Icon: Sparkles, delay: 0.2, x: 600, y: -300 },
+    { Icon: Github, delay: 0.4, x: -200, y: 200 },
+    { Icon: Zap, delay: 0.8, x: 700, y:  100 },
   ];
 
   return (
