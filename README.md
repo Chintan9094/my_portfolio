@@ -1,6 +1,6 @@
 # 🌌 Chintan Desai | Personal Portfolio
 
-![Portfolio Banner](https://via.placeholder.com/1200x300?text=Chintan+Desai+Portfolio)
+![Portfolio Banner](/banner.png)
 
 Welcome to my **digital playground**!  
 This is my **personal portfolio website**, crafted with **React**, **Vite**, and **Tailwind CSS**. It showcases my **skills, projects, and social links** with modern animations and futuristic neon vibes.  
