@@ -12,6 +12,11 @@ const ContactSection = lazy(() => import("./pages/ContactSection").then(m => ({ 
 const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
 
 export default function App() {
+
+  useEffect(() => {
+    document.title = "Chintan Rabari | Frontend Developer Portfolio";
+  }, []);
+
   const [loading, setLoading] = useState(true);
    const [isDarkMode, setIsDarkMode] = useState(() => {
     // ✅ Load from localStorage (if available)
