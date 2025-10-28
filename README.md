@@ -50,10 +50,10 @@ This is my **personal portfolio website**, crafted with **React**, **Vite**, and
 - **Deployment Ready:** Vercel, Netlify, GitHub Pages  
 
 ---
+  ## 🌐 Live Demo
 
-## 🌐 Live Demo
+  [![Live Preview](https://img.shields.io/badge/Live-Demo-10B981?style=for-the-badge)](https://my-portfolio-lyart-delta-8w3yyc3k0p.vercel.app)
 
-[![Live Preview](https://img.shields.io/badge/Live-Demo-10B981?style=for-the-badge)](https://your-portfolio-link.vercel.app)
 
 ---
 
