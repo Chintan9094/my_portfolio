@@ -42,7 +42,7 @@ const projects = [
     title: "Personal Portfolio",
     description: "My own portfolio website showcasing my projects, skills, and creative web design powered by motion effects.",
     tech: ["React", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "#",
+    liveUrl: "https://my-portfolio-lyart-delta-8w3yyc3k0p.vercel.app/",
     gradient: "from-pink-500 to-rose-600",
   },
 ];
