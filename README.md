@@ -1,4 +1,4 @@
-# 🌌 Chintan Desai | Personal Portfolio
+# 🌌 Chintan Rabari | Personal Portfolio
 
 ![Portfolio Banner](https://raw.githubusercontent.com/Chintan9094/my_portfolio/edfe03770a997db6f5910e79ba3ecc34fb950a3a/public/banner.png)
 
