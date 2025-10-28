@@ -20,7 +20,7 @@ function FooterComponent({ isDarkMode }) {
     const element = document.getElementById(id);
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
-
+  
   return (
     <footer className={`relative py-12 px-6 border-t ${isDarkMode ? "border-cyan-400/10 bg-black" : "border-gray-100 bg-transparent"}`}>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50" />
