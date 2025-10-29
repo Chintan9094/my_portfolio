@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense, lazy } from "react";
 import Preloader from "./components/Preloader";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 // Lazy-loaded components for code-splitting without changing visuals
 const StarfieldBackground = lazy(() => import("./components/StarfieldBackground").then(m => ({ default: m.StarfieldBackground })));
@@ -66,6 +67,7 @@ export default function App() {
           </main>
         </div>
       )}
+      <Analytics />
       <SpeedInsights />
     </>
   );
