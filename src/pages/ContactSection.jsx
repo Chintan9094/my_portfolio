@@ -10,9 +10,6 @@ import {
   XCircle,
 } from "lucide-react";
 
-// ✅ Import the notification function
-import { showMessageSentNotification } from "../utils/showNotification";
-
 const socialLinks = [
   {
     Icon: Github,
@@ -77,9 +74,6 @@ function ContactSectionComponent({ isDarkMode }) {
 
       if (response.ok) {
         setFormData({ name: "", email: "", message: "" });
-
-        // ✅ Show notification on successful message
-        showMessageSentNotification();
       }
     } catch {
       setStatus("error");
