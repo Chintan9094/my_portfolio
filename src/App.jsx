@@ -3,6 +3,9 @@ import Preloader from "./components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
+// ✅ Import your notification helper
+import { showWelcomeNotification } from "./utils/showNotification"; // 👈 create this file (explained below)
+
 // Lazy-loaded components for code-splitting without changing visuals
 const StarfieldBackground = lazy(() => import("./components/StarfieldBackground").then(m => ({ default: m.StarfieldBackground })));
 const CursorGlow = lazy(() => import("./components/CursorGlow").then(m => ({ default: m.CursorGlow })));
@@ -14,13 +17,12 @@ const ContactSection = lazy(() => import("./pages/ContactSection").then(m => ({ 
 const Footer = lazy(() => import("./components/Footer").then(m => ({ default: m.Footer })));
 
 export default function App() {
-
   useEffect(() => {
     document.title = "Chintan Rabari | Frontend Developer Portfolio";
   }, []);
 
   const [loading, setLoading] = useState(true);
-   const [isDarkMode, setIsDarkMode] = useState(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     // ✅ Load from localStorage (if available)
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme === "dark") return true;
@@ -44,12 +46,33 @@ export default function App() {
     }
   }, [isDarkMode]);
 
+  // 🚀 Show welcome notification once Preloader is done
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        showWelcomeNotification();
+      }, 2000); // small delay looks cooler 😎
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
   return (
     <>
-      {loading && <Preloader theme={isDarkMode ? "dark" : "light"} onFinish={() => setLoading(false)} />}
+      {loading && (
+        <Preloader
+          theme={isDarkMode ? "dark" : "light"}
+          onFinish={() => setLoading(false)}
+        />
+      )}
 
       {!loading && (
-        <div className={`relative min-h-screen overflow-x-hidden transition-colors duration-700 ${isDarkMode ? "dark bg-black text-white" : "bg-[radial-gradient(circle_at_top_left,_#e6fbff,_#f6ecff_35%)] text-gray-800"}`}>
+        <div
+          className={`relative min-h-screen overflow-x-hidden transition-colors duration-700 ${
+            isDarkMode
+              ? "dark bg-black text-white"
+              : "bg-[radial-gradient(circle_at_top_left,_#e6fbff,_#f6ecff_35%)] text-gray-800"
+          }`}
+        >
           <Suspense fallback={null}>
             <StarfieldBackground />
             <CursorGlow />
@@ -57,7 +80,10 @@ export default function App() {
 
           <main className="relative z-10">
             <Suspense fallback={null}>
-              <HeroSection isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+              <HeroSection
+                isDarkMode={isDarkMode}
+                setIsDarkMode={setIsDarkMode}
+              />
               <AboutSection isDarkMode={isDarkMode} />
               <SkillsSection isDarkMode={isDarkMode} />
               <ProjectsSection isDarkMode={isDarkMode} />

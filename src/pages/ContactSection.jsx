@@ -10,6 +10,9 @@ import {
   XCircle,
 } from "lucide-react";
 
+// ✅ Import the notification function
+import { showMessageSentNotification } from "../utils/showNotification";
+
 const socialLinks = [
   {
     Icon: Github,
@@ -49,6 +52,7 @@ function ContactSectionComponent({ isDarkMode }) {
   const [status, setStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
+  // ✅ Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
@@ -68,8 +72,15 @@ function ContactSectionComponent({ isDarkMode }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       setStatus(response.ok ? "success" : "error");
-      if (response.ok) setFormData({ name: "", email: "", message: "" });
+
+      if (response.ok) {
+        setFormData({ name: "", email: "", message: "" });
+
+        // ✅ Show notification on successful message
+        showMessageSentNotification();
+      }
     } catch {
       setStatus("error");
     }
@@ -113,6 +124,7 @@ function ContactSectionComponent({ isDarkMode }) {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* 📬 Contact Form */}
           <motion.form
             noValidate
             aria-label="Contact form"
@@ -179,11 +191,14 @@ function ContactSectionComponent({ isDarkMode }) {
                     : "Your Message"}
                 </motion.label>
                 {errors[field] && (
-                  <p id={`${field}-error`} className="text-red-400 text-sm mt-1">{errors[field]}</p>
+                  <p id={`${field}-error`} className="text-red-400 text-sm mt-1">
+                    {errors[field]}
+                  </p>
                 )}
               </div>
             ))}
 
+            {/* 📨 Submit Button */}
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
@@ -203,10 +218,11 @@ function ContactSectionComponent({ isDarkMode }) {
                   ease: "easeInOut",
                 }}
               >
-                <Send className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300"  />
+                <Send className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
               </motion.div>
             </motion.button>
 
+            {/* ✅ Success/Error Messages */}
             {status === "success" && (
               <div className="flex items-center justify-center gap-2 text-green-400 mt-4">
                 <CheckCircle className="w-5 h-5" />
@@ -225,6 +241,7 @@ function ContactSectionComponent({ isDarkMode }) {
             )}
           </motion.form>
 
+          {/* 🔗 Social Links */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -238,11 +255,7 @@ function ContactSectionComponent({ isDarkMode }) {
                   : "glass-card border border-transparent text-gray-800"
               }`}
             >
-              <h3
-                className={`${
-                  isDarkMode ? "text-white" : "text-gray-800"
-                } mb-6`}
-              >
+              <h3 className={`${isDarkMode ? "text-white" : "text-gray-800"} mb-6`}>
                 Connect With Me
               </h3>
               <p
@@ -250,9 +263,7 @@ function ContactSectionComponent({ isDarkMode }) {
                   isDarkMode ? "text-white/60" : "text-gray-700/80"
                 } mb-8 leading-relaxed`}
               >
-                Feel free to reach out through any of these platforms. I'm
-                always open to discussing new projects, creative ideas, or
-                opportunities.
+                Feel free to reach out through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities.
               </p>
 
               <div className="space-y-4">
