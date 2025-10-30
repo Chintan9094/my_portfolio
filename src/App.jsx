@@ -47,9 +47,6 @@ const Footer = lazy(() =>
 );
 
 export default function App() {
-  useEffect(() => {
-    document.title = "Chintan Rabari | Frontend Developer Portfolio";
-  }, []);
 
   const [loading, setLoading] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => {
