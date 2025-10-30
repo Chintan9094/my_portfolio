@@ -52,7 +52,7 @@ This is my **personal portfolio website**, crafted with **React**, **Vite**, and
 ---
   ## 🌐 Live Demo
 
-  [![Live Preview](https://img.shields.io/badge/Live-Demo-10B981?style=for-the-badge)](https://my-portfolio-lyart-delta-8w3yyc3k0p.vercel.app)
+  [![Live Preview](https://img.shields.io/badge/Live-Demo-10B981?style=for-the-badge)](https://chintan-porfolio.vercel.app/)
 
 
 ---
