@@ -1,6 +1,13 @@
 {
-  "name": "Chintan Portfolio",
+  "name": "Chintan Rabari Portfolio",
   "short_name": "Portfolio",
+  "description": "Personal portfolio of Chintan Rabari – Frontend Developer specializing in React, Next.js, and modern web technologies.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0ff",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -11,9 +18,12 @@
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
