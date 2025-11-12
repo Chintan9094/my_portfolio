@@ -14,6 +14,14 @@ import {
 import { Typewriter } from "react-simple-typewriter";
 const resumePDF = "/Chintan-Resume.pdf";
 
+const socialLinks = [
+  { Icon: Github, url: "https://github.com/Chintan9094" },
+  { Icon: Linkedin, url: "https://www.linkedin.com/in/chintan-rabari-a54a712b9/" },
+  { Icon: Twitter, url: "https://x.com/@Chintandesai94" },
+  { Icon: Mail, url: "mailto:chintandesai249@gmail.com" },
+];
+
+
 export function HeroSection({ isDarkMode, setIsDarkMode }) {
   const floatingIcons = [
     { Icon: Code2, delay: 0, x: -100, y: -50 },
@@ -174,17 +182,25 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
 
           {/* Social Links */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="flex gap-6 justify-center">
-            {[Github, Linkedin, Twitter, Mail].map((Icon, index) => (
+          {socialLinks.map(({ Icon, url }, index) => (
               <motion.a
                 key={index}
-                href="#"
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
-                  isDarkMode ? "border border-cyan-400/30 hover:bg-cyan-400/10" : "glass-card hover:scale-[1.05]"
+                  isDarkMode
+                    ? "border border-cyan-400/30 hover:bg-cyan-400/10"
+                    : "glass-card hover:scale-[1.05]"
                 }`}
               >
-                <Icon className={`w-5 h-5 ${isDarkMode ? "text-cyan-400" : "text-cyan-600"}`} />
+                <Icon
+                  className={`w-5 h-5 ${
+                    isDarkMode ? "text-cyan-400" : "text-cyan-600"
+                  }`}
+                />
               </motion.a>
             ))}
           </motion.div>
