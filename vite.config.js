@@ -9,7 +9,7 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  base: "./", // ✅ ensures correct asset paths on deployment (esp. Vercel / GitHub Pages)
+  base: "./", 
   build: {
     cssMinify: true,
     sourcemap: false,

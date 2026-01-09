@@ -97,7 +97,6 @@
 }
 
 @layer utilities {
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -115,12 +114,10 @@
     background: linear-gradient(180deg, #22d3ee, #a855f7);
   }
 
-  /* Smooth scroll */
   html {
     scroll-behavior: smooth;
   }
 
-  /* Gradient animation */
   @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -129,7 +126,6 @@
 
   .animate-gradient { animation: gradient 3s ease infinite; }
 
-  /* Glassmorphism utility classes */
   .glass-card {
     @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-md;
   }
@@ -137,7 +133,6 @@
     @apply bg-black/30 backdrop-blur-md border border-cyan-400/20;
   }
 
-  /* Slow pulse for light-mode blobs */
   @keyframes slowPulse {
     0% { transform: scale(0.98); opacity: 0.8; }
     50% { transform: scale(1.02); opacity: 1; }

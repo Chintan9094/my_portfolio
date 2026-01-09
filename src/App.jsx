@@ -3,8 +3,6 @@ import Preloader from "./components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
-
-// Lazy-loaded components for code-splitting without changing visuals
 const StarfieldBackground = lazy(() =>
   import("./components/StarfieldBackground").then((m) => ({
     default: m.StarfieldBackground,
@@ -56,12 +54,10 @@ export default function App() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  // Update localStorage whenever theme changes
   useEffect(() => {
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
 
-  // Apply body class for global styling (Tailwind dark mode)
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -84,7 +80,7 @@ export default function App() {
           className={`relative min-h-screen overflow-x-hidden transition-colors duration-700 ${
             isDarkMode
               ? "dark bg-black text-white"
-              : "bg-[radial-gradient(circle_at_top_left,_#e6fbff,_#f6ecff_35%)] text-gray-800"
+              : "bg-[radial-gradient(circle_at_top_left,#e6fbff,#f6ecff_35%)] text-gray-800"
           }`}
         >
           <Suspense fallback={null}>

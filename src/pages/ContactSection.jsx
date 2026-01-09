@@ -49,7 +49,6 @@ function ContactSectionComponent({ isDarkMode }) {
   const [status, setStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
-  // ✅ Handle Form Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
@@ -105,7 +104,7 @@ function ContactSectionComponent({ isDarkMode }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="mb-4 bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
             Let's Connect
           </h2>
           <p
@@ -118,7 +117,6 @@ function ContactSectionComponent({ isDarkMode }) {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* 📬 Contact Form */}
           <motion.form
             noValidate
             aria-label="Contact form"
@@ -192,15 +190,14 @@ function ContactSectionComponent({ isDarkMode }) {
               </div>
             ))}
 
-            {/* 📨 Submit Button */}
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`w-full px-8 py-4 rounded-lg transition-all flex items-center justify-center gap-2 font-semibold ${
                 isDarkMode
-                  ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
-                  : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+                  ? "bg-linear-to-r from-cyan-500 to-purple-600 text-white"
+                  : "bg-linear-to-r from-cyan-400 to-blue-500 text-white"
               }`}
             >
               <span>Send Message</span>
@@ -216,7 +213,6 @@ function ContactSectionComponent({ isDarkMode }) {
               </motion.div>
             </motion.button>
 
-            {/* ✅ Success/Error Messages */}
             {status === "success" && (
               <div className="flex items-center justify-center gap-2 text-green-400 mt-4">
                 <CheckCircle className="w-5 h-5" />
@@ -235,7 +231,6 @@ function ContactSectionComponent({ isDarkMode }) {
             )}
           </motion.form>
 
-          {/* 🔗 Social Links */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -280,8 +275,8 @@ function ContactSectionComponent({ isDarkMode }) {
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center transition-shadow ${
                         isDarkMode
-                          ? "bg-gradient-to-br from-cyan-500 to-purple-600"
-                          : "bg-gradient-to-br from-cyan-400 to-blue-500"
+                          ? "bg-linear-to-br from-cyan-500 to-purple-600"
+                          : "bg-linear-to-br from-cyan-400 to-blue-500"
                       }`}
                     >
                       <Icon className="w-6 h-6 text-white" />

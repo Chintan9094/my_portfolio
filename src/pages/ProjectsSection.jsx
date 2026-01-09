@@ -4,18 +4,18 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
+    title: "Realtime Chat App",
+    description: "Realtime chat application with private and group messaging, built using Socket.io for instant communication and a scalable backend.",
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "Socket.io", "Tailwind CSS"],
+    liveUrl: "https://chatapp-go.vercel.app",
+    gradient: "from-cyan-500 to-blue-600",
+  },
+  {
     title: "News Cart",
     description: "Dynamic news aggregator that fetches real-time headlines and categorizes them by topics with smooth UI animations.",
     tech: ["Next.js", "Bootstrap CSS", "Framer Motion"],
     liveUrl: "https://newscart.org/",
     gradient: "from-cyan-500 to-blue-600",
-  },
-  {
-    title: "Guj Prajapati Samaj",
-    description: "Community web platform built for Prajapati Samaj to share events, member directories, and announcements.",
-    tech: ["React", "Tailwind CSS"],
-    liveUrl: "https://gujaratprajapatisamaj.com/",
-    gradient: "from-purple-500 to-pink-600",
   },
   {
     title: "Hotel Booking System",
@@ -58,7 +58,7 @@ function ProjectsSectionComponent({ isDarkMode }) {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-20">
-          <h2 className="mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Featured Projects</h2>
+          <h2 className="mb-4 bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Featured Projects</h2>
           <p className={`${isDarkMode ? "text-white/60" : "text-gray-700/80"} max-w-2xl mx-auto`}>A showcase of my recent work - from concept to deployment</p>
         </motion.div>
 
@@ -66,7 +66,7 @@ function ProjectsSectionComponent({ isDarkMode }) {
           {projects.map((project, index) => (
             <motion.div key={project.title} initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: index * 0.1 }} whileHover={{ y: -10 }} className="group relative">
               <div className={`relative h-full p-6 rounded-2xl transition-all duration-300 overflow-hidden ${isDarkMode ? "bg-white/5 border border-cyan-400/20 hover:border-cyan-400/50" : "glass-card border border-transparent hover:shadow-lg"}`}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`} />
+                <div className={`absolute inset-0 bg-linear-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl shadow-[0_0_40px_rgba(0,255,255,0.12)]" />
 
                 <div className="relative z-10">
@@ -82,7 +82,7 @@ function ProjectsSectionComponent({ isDarkMode }) {
 
                   <div className="flex gap-4">
                     {project.liveUrl && project.liveUrl !== "#" ? (
-                      <motion.a aria-label={`Open ${project.title} live demo`} href={project.liveUrl} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow ${isDarkMode ? "bg-gradient-to-r from-cyan-500 to-purple-600" : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white"}`}>
+                      <motion.a aria-label={`Open ${project.title} live demo`} href={project.liveUrl} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-shadow ${isDarkMode ? "bg-linear-to-r from-cyan-500 to-purple-600" : "bg-linear-to-r from-cyan-400 to-blue-500 text-white"}`}>
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
                       </motion.a>

@@ -52,7 +52,7 @@ function PreloaderComponent({ theme = "dark", onFinish }) {
         ))}
       </motion.div>
 
-      <motion.p className={`mt-8 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${textGradient}`} animate={{ y: [0, -5, 0], opacity: [0.8, 1, 0.8] }} transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}>
+      <motion.p className={`mt-8 text-xl font-bold text-transparent bg-clip-text bg-linear-to-r ${textGradient}`} animate={{ y: [0, -5, 0], opacity: [0.8, 1, 0.8] }} transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}>
         Loading Digital Dreams...
       </motion.p>
     </div>

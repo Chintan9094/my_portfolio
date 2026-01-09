@@ -3,13 +3,44 @@ import { memo, useRef } from "react";
 import { GraduationCap, Briefcase, Code, Rocket } from "lucide-react";
 
 const timeline = [
-  { year: "March-2020", title: "12th Standard", description: "Completed Higher Secondary Education with a focus on Commerce", icon: GraduationCap },
-  { year: "March-2023", title: "B.Com Degree", description: "Completed Bachelor of Commerce, building foundational business knowledge", icon: GraduationCap },
-  { year: "April-2025", title: "MCA Program", description: "Master of Computer Applications - Specialized in software development", icon: GraduationCap },
-  { year: "Jan-2025", title: "First Internship", description: "Started hands-on development work, learning modern tech stacks", icon: Briefcase },
-  { year: "Since 2023", title: "Building Projects", description: "Creating production-ready applications with React & Next.js", icon: Code },
-  { year: "Now", title: "Frontend Developer", description: "Crafting beautiful, performant web experiences", icon: Rocket },
+  {
+    year: "March 2020",
+    title: "Higher Secondary (12th – Commerce)",
+    description: "Completed Higher Secondary education with a strong foundation in Commerce subjects.",
+    icon: GraduationCap,
+  },
+  {
+    year: "March 2023",
+    title: "Bachelor of Commerce (B.Com)",
+    description: "Completed B.Com degree, building a solid understanding of business, finance, and management concepts.",
+    icon: GraduationCap,
+  },
+  {
+    year: "Since 2023",
+    title: "Project Development Journey",
+    description: "Started building real-world and production-ready web applications using modern web technologies.",
+    icon: Code,
+  },
+  {
+    year: "Jan 2025",
+    title: "First Internship",
+    description: "Gained hands-on industry experience, working on real projects and learning professional development practices.",
+    icon: Briefcase,
+  },
+  {
+    year: "April 2025",
+    title: "MCA Completed",
+    description: "Successfully completed Master of Computer Applications with a focus on software development and modern web technologies.",
+    icon: GraduationCap,
+  },
+  {
+    year: "Oct 2025 – Present",
+    title: "Junior Software Developer",
+    description: "Working as a Junior Software Developer, contributing to live projects, collaborating with teams, and building scalable applications.",
+    icon: Rocket,
+  },
 ];
+
 
 function AboutSectionComponent({ isDarkMode }) {
   const ref = useRef(null);
@@ -22,12 +53,12 @@ function AboutSectionComponent({ isDarkMode }) {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-20">
-          <h2 className="mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">My Journey</h2>
+          <h2 className="mb-4 bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">My Journey</h2>
           <p className={`${isDarkMode ? "text-white/60" : "text-gray-700/80"} max-w-2xl mx-auto`}>From commerce to code - a path driven by curiosity and passion for creating digital experiences</p>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400/0 via-cyan-400/50 to-cyan-400/0 hidden md:block" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-cyan-400/0 via-cyan-400/50 to-cyan-400/0 hidden md:block" />
 
           <div className="space-y-12">
             {timeline.map((item, index) => {
@@ -44,7 +75,7 @@ function AboutSectionComponent({ isDarkMode }) {
                     </motion.div>
                   </div>
 
-                  <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.6 }} className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(0,255,255,0.4)]">
+                  <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.6 }} className="relative z-10 w-16 h-16 rounded-full bg-linear-to-br from-cyan-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(0,255,255,0.4)]">
                     <Icon className="w-8 h-8 text-white" />
                   </motion.div>
 
