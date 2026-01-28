@@ -10,6 +10,13 @@ const projects = [
     liveUrl: "https://chatapp-go.vercel.app",
     gradient: "from-cyan-500 to-blue-600",
   },
+    {
+    title: "ShopHub E-commerce",
+    description: "Full-stack e-commerce platform with product listing, cart, authentication, and order management features.",
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    liveUrl: "#",
+    gradient: "from-violet-500 to-purple-600",
+  },
   {
     title: "News Cart",
     description: "Dynamic news aggregator that fetches real-time headlines and categorizes them by topics with smooth UI animations.",

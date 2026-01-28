@@ -16,18 +16,20 @@ const resumePDF = "/Chintan-Resume.pdf";
 
 const socialLinks = [
   { Icon: Github, url: "https://github.com/Chintan9094" },
-  { Icon: Linkedin, url: "https://www.linkedin.com/in/chintan-rabari-a54a712b9/" },
+  {
+    Icon: Linkedin,
+    url: "https://www.linkedin.com/in/chintan-rabari-a54a712b9/",
+  },
   { Icon: Twitter, url: "https://x.com/@Chintandesai94" },
   { Icon: Mail, url: "mailto:chintandesai249@gmail.com" },
 ];
-
 
 export function HeroSection({ isDarkMode, setIsDarkMode }) {
   const floatingIcons = [
     { Icon: Code2, delay: 0, x: -100, y: -50 },
     { Icon: Sparkles, delay: 0.2, x: 600, y: -300 },
     { Icon: Github, delay: 0.4, x: -200, y: 200 },
-    { Icon: Zap, delay: 0.8, x: 700, y:  100 },
+    { Icon: Zap, delay: 0.8, x: 700, y: 100 },
   ];
 
   return (
@@ -48,7 +50,9 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
 
       <div className="absolute top-6 right-6 z-50">
         <motion.button
-          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          aria-label={
+            isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+          }
           onClick={() => startTransition(() => setIsDarkMode(!isDarkMode))}
           initial={{ rotate: 0 }}
           animate={{ rotate: isDarkMode ? 0 : 360 }}
@@ -68,7 +72,11 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
             exit={{ rotate: 90, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {isDarkMode ? <Moon className="w-6 h-6" /> : <Sun className="w-6 h-6" />}
+            {isDarkMode ? (
+              <Moon className="w-6 h-6" />
+            ) : (
+              <Sun className="w-6 h-6" />
+            )}
           </motion.div>
         </motion.button>
       </div>
@@ -92,7 +100,10 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
               className="absolute"
               style={{ left: `0%`, top: `50%`, marginLeft: x, marginTop: y }}
             >
-              <Icon className={`w-12 h-12 ${isDarkMode ? "text-cyan-400" : "text-cyan-500"}`} strokeWidth={1.5} />
+              <Icon
+                className={`w-12 h-12 ${isDarkMode ? "text-cyan-400" : "text-cyan-500"}`}
+                strokeWidth={1.5}
+              />
             </motion.div>
           ))}
         </div>
@@ -118,7 +129,11 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
             transition={{ delay: 0.4 }}
             className="mb-6"
           >
-            <span className={`${isDarkMode ? "text-white/90" : "text-gray-800"} block`}>Hi, I'm</span>
+            <span
+              className={`${isDarkMode ? "text-white/90" : "text-gray-800"} block`}
+            >
+              Hi, I'm
+            </span>
             <span className="block bg-linear-to-r from-cyan-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-gradient bg-size-[200%_auto]">
               Chintan 👋
             </span>
@@ -130,19 +145,41 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
             transition={{ delay: 0.6 }}
             className={`${isDarkMode ? "text-white/70" : "text-gray-700"} text-2xl md:text-3xl mb-8`}
           >
-            <Typewriter words={["Frontend Developer", "React Enthusiast", "UI/UX Lover"]} loop={0} cursor cursorStyle="|" typeSpeed={80} deleteSpeed={50} delaySpeed={2000} />
+            <Typewriter
+              words={[
+                "MERN Stack Developer",
+                "AI Enthusiast",
+                "Full Stack Developer",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={2000}
+            />
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="flex flex-wrap gap-6 justify-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="flex flex-wrap gap-6 justify-center mb-12"
+          >
             <motion.a
               aria-label="Hire Me via Email"
               href="mailto:chintandesai249@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(0, 255, 255, 0.35)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(0, 255, 255, 0.35)",
+              }}
               whileTap={{ scale: 0.95 }}
               className={`px-8 py-4 rounded-full text-white flex items-center gap-2 ${
-                isDarkMode ? "bg-linear-to-r from-cyan-500 to-purple-600" : "bg-linear-to-r from-cyan-500 to-purple-500 shadow-md"
+                isDarkMode
+                  ? "bg-linear-to-r from-cyan-500 to-purple-600"
+                  : "bg-linear-to-r from-cyan-500 to-purple-500 shadow-md"
               }`}
             >
               <Mail className="w-5 h-5" />
@@ -152,10 +189,16 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
             <motion.a
               href={resumePDF}
               download="Chintan_Resume.pdf"
-              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 0 25px rgba(0,255,255,0.35)" }}
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+                boxShadow: "0 0 25px rgba(0,255,255,0.35)",
+              }}
               whileTap={{ scale: 0.95 }}
               className={`px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 transition-all ${
-                isDarkMode ? "bg-linear-to-r from-cyan-500 to-purple-600 text-white" : "glass-card text-gray-800 hover:bg-white/70"
+                isDarkMode
+                  ? "bg-linear-to-r from-cyan-500 to-purple-600 text-white"
+                  : "glass-card text-gray-800 hover:bg-white/70"
               }`}
             >
               Download Resume
@@ -167,15 +210,22 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`px-8 py-4 border-2 rounded-full hover:bg-cyan-400/10 transition-colors backdrop-blur-sm ${
-                isDarkMode ? "border-cyan-400/50 text-white" : "border-cyan-200 text-gray-800"
+                isDarkMode
+                  ? "border-cyan-400/50 text-white"
+                  : "border-cyan-200 text-gray-800"
               }`}
             >
               View Projects
             </motion.a>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="flex gap-6 justify-center">
-          {socialLinks.map(({ Icon, url }, index) => (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="flex gap-6 justify-center"
+          >
+            {socialLinks.map(({ Icon, url }, index) => (
               <motion.a
                 key={index}
                 href={url}
@@ -200,7 +250,15 @@ export function HeroSection({ isDarkMode, setIsDarkMode }) {
         </motion.div>
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, y: [0, 10, 0] }} transition={{ opacity: { delay: 1.5 }, y: { duration: 2, repeat: Infinity } }} className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1.5 },
+          y: { duration: 2, repeat: Infinity },
+        }}
+        className="hidden lg:flex absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
         <div className="w-6 h-10 border-2 border-cyan-400/50 rounded-full flex items-start justify-center p-2">
           <div className="w-1 h-2 bg-cyan-400 rounded-full" />
         </div>
