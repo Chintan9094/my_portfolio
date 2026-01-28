@@ -10,7 +10,7 @@ This is my **personal portfolio website**, crafted with **React**, **Vite**, and
 ## 🚀 Features
 
 - **✨ Hero Section**
-  - Typewriter effect for roles: `Frontend Developer`, `React Enthusiast`, `UI/UX Lover`
+  - Typewriter effect for roles: `MERN Stack Developer`, `React Enthusiast`, `UI/UX Lover`
   - Animated gradient text & underlines
   - Floating tech icons with smooth motion
   - Scroll indicator with glow effects

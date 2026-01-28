@@ -1,7 +1,7 @@
 {
   "name": "Chintan Rabari Portfolio",
   "short_name": "Portfolio",
-  "description": "Personal portfolio of Chintan Rabari – Frontend Developer specializing in React, Next.js, and modern web technologies.",
+  "description": "Personal portfolio of Chintan Rabari – MERN Stack Developer specializing in React, Node.js, Express, and MongoDB.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
